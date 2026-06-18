@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,12 +97,14 @@ body{
     object-fit:contain;
     border-radius:20px;
     transition:opacity .4s ease;
+    cursor:pointer;
 }
 
 .swipe-text{
     margin-top:20px;
     color:#aaa;
     font-size:16px;
+    line-height:1.8;
 }
 
 .letter{
@@ -183,7 +186,8 @@ OPEN YOUR GIFT 🎁
 </div>
 
 <div class="swipe-text">
-    📱 Swipe Up/Down on Phone<br>
+    📱 Tap Right Side = Next Photo<br>
+    📱 Tap Left Side = Previous Photo<br>
     💻 Scroll Mouse Wheel on Laptop
 </div>
 
@@ -295,6 +299,7 @@ let currentIndex = 0;
 const img = document.getElementById("scrollImage");
 
 function showImage(index){
+
     img.style.opacity = 0;
 
     setTimeout(()=>{
@@ -303,46 +308,53 @@ function showImage(index){
     },200);
 }
 
-// Desktop scroll
-img.addEventListener("wheel",(e)=>{
 
-    e.preventDefault();
-
-    if(e.deltaY > 0){
-        currentIndex = (currentIndex + 1) % images.length;
-    }else{
-        currentIndex = (currentIndex - 1 + images.length) % images.length;
-    }
-
-    showImage(currentIndex);
-});
+// Check Device
+const isMobile = window.innerWidth <= 768;
 
 
-// Mobile swipe
-let startY = 0;
+// Desktop Scroll
+if(!isMobile){
 
-img.addEventListener("touchstart",(e)=>{
-    startY = e.touches[0].clientY;
-});
+    img.addEventListener("wheel",(e)=>{
 
-img.addEventListener("touchend",(e)=>{
+        e.preventDefault();
 
-    let endY = e.changedTouches[0].clientY;
-    let diff = startY - endY;
-
-    if(Math.abs(diff) > 50){
-
-        if(diff > 0){
+        if(e.deltaY > 0){
             currentIndex = (currentIndex + 1) % images.length;
         }else{
             currentIndex = (currentIndex - 1 + images.length) % images.length;
         }
 
         showImage(currentIndex);
-    }
-});
+
+    },{ passive:false });
+}
+
+
+// Mobile Tap
+if(isMobile){
+
+    img.addEventListener("touchend",(e)=>{
+
+        const rect = img.getBoundingClientRect();
+        const touchX = e.changedTouches[0].clientX - rect.left;
+
+        if(touchX > rect.width / 2){
+            currentIndex = (currentIndex + 1) % images.length;
+        }else{
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+        }
+
+        showImage(currentIndex);
+
+    });
+
+}
 
 </script>
 
 </body>
 </html>
+```
+
