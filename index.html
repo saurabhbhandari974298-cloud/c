@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Chandana ❤️</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:#090909;
+color:white;
+overflow-x:hidden;
+}
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+}
+
+.hero h1{
+font-size:5rem;
+background:linear-gradient(90deg,#ff66b2,#ffd6e7);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+letter-spacing:4px;
+margin-top:15px;
+font-size:18px;
+}
+
+.btn{
+margin-top:40px;
+padding:18px 45px;
+border:none;
+border-radius:50px;
+font-size:20px;
+cursor:pointer;
+background:#ff4da6;
+color:white;
+box-shadow:0 0 20px #ff4da6;
+transition:.4s;
+}
+
+.btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 40px #ff4da6;
+}
+
+.section{
+min-height:100vh;
+padding:80px 20px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.section h2{
+font-size:3rem;
+margin-bottom:40px;
+color:#ff99cc;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+width:90%;
+max-width:1200px;
+}
+
+.gallery img{
+width:600px;
+height:600px;
+object-fit:cover;
+border-radius:20px;
+transition:.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+.letter{
+max-width:800px;
+font-size:1.2rem;
+line-height:1.8;
+}
+
+.countdown{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.image-container {
+    width: 600px;
+    height: 500px;
+    margin: auto;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.5s ease-in-out;
+}
+
+
+.box{
+background:#151515;
+padding:20px;
+border-radius:15px;
+min-width:120px;
+box-shadow:0 0 15px rgba(255,0,100,.4);
+}
+
+.box h3{
+font-size:2rem;
+color:#ff99cc;
+}
+
+.final{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.final h1{
+font-size:5rem;
+color:#ff66b2;
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+50%{
+transform:scale(1.08);
+}
+}
+
+.heart{
+position:fixed;
+font-size:25px;
+animation:float 8s linear infinite;
+pointer-events:none;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:1;
+}
+100%{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<audio autoplay loop>
+<source src="birthday.mp3" type="audio/mpeg">
+</audio>
+
+<section class="hero">
+
+<h1>Surprise gift for someone special</h1>
+
+<p>A CINEMATIC JOURNEY CREATED JUST FOR YOU</p>
+
+<button class="btn" onclick="document.getElementById('gallery').scrollIntoView()">
+OPEN YOUR GIFT 🎁
+</button>
+
+</section>
+
+<section class="section" id="gallery">
+
+<h2>Your Beautiful Memories 📸</h2>
+
+
+<div class="image-container">
+    <img id="scrollImage" src="images/photo1.jpeg" alt="Image">
+</div>
+
+
+</section>
+
+<section class="section">
+
+<h2>My Letter To You 💌</h2>
+
+<div class="letter">
+
+<p align = "left">hey botttttttt,</p>
+<br>
+
+Today is not just your birthday. It is the day the most beautiful person came into this world.
+
+Thank you for every smile, every laugh, every memory, and every moment we have shared together.
+
+You make my life brighter, happier, and more meaningful every single day.
+
+I don't know if I always express it well, but I want you to know that your presence makes a difference.
+On your birthday, I wish you endless happiness, good health, success, and all the beautiful things life has to offer. May every dream you hold close to your heart find its way to reality, and may this year be filled with wonderful memories and reasons to smile every day.
+Thank you for being such an amazing person.
+Enjoy your special day, laugh a little louder, smile a little brighter, and make beautiful memories. You deserve all the happiness in the world.
+Happy Birthday once again! 🎉✨
+Stay happy, stay blessed, and keep being the wonderful person you are. ❤️
+
+</div>
+
+</section>
+
+<section class="final">
+
+<h1>Happy Birthday Bottttttt 🎂</h1>
+
+</section>
+
+<script>
+
+const birthday = new Date("July 1, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+
+const now = new Date().getTime();
+
+const distance = birthday - now;
+
+document.getElementById("days").innerHTML =
+Math.floor(distance/(1000*60*60*24));
+
+document.getElementById("hours").innerHTML =
+Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+
+document.getElementById("minutes").innerHTML =
+Math.floor((distance%(1000*60*60))/(1000*60));
+
+document.getElementById("seconds").innerHTML =
+Math.floor((distance%(1000*60))/1000);
+
+},1000);
+
+function createHeart(){
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(20+Math.random()*25)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},8000);
+}
+
+setInterval(createHeart,300);
+
+
+const images = [
+    "images/photo1.jpeg",
+    "images/photo2.jpeg",
+    "images/photo3.jpeg",
+    "images/photo4.jpeg",
+    "images/photo5.jpeg",
+    "images/photo6.jpeg",
+    "images/photo7.jpeg",
+    "images/photo8.jpeg",
+    "images/photo9.jpeg",
+    "images/photo10.jpeg",
+    "images/photo11.jpeg",
+    "images/photo12.jpeg",
+];
+
+let currentIndex = 0;
+const img = document.getElementById("scrollImage");
+
+img.addEventListener("wheel", function(e) {
+    e.preventDefault();
+
+    if (e.deltaY > 0) {
+        currentIndex = (currentIndex + 1) % images.length;
+    } else {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+    }
+
+    img.src = images[currentIndex];
+});
+
+
+</script>
+
+</body>
+</html>
